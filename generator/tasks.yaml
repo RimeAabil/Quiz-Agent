@@ -1,0 +1,24 @@
+tasks:
+  - name: generate_quiz
+    description: >
+      Generate a personalized quiz when a student reaches a specific milestone
+      in the course (e.g., end of chapter or section).
+      The quiz adapts to the student's learning style, name, and current skill level.
+      If it is the student's first time in the course, use their initial assessment results.
+    agent: QuizGeneratorAgent
+    expected_output: >
+      JSON object with 'questions', 'options', 'correct_answer', and 'difficulty'.
+    parameters:
+      - name: profile
+        type: dict
+        description: >
+          Contains:
+            - name: student's full name
+            - learning_style: visual, auditory, or kinesthetic
+            - initial_level: beginner, intermediate, or advanced (if first time)
+      - name: module_content
+        type: string
+        description: The content of the completed chapter/section.
+      - name: milestone
+        type: string
+        description: The point in the course triggering the quiz (e.g., 'Chapter 3 end').

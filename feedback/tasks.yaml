@@ -1,0 +1,26 @@
+tasks:
+  - name: give_feedback
+    description: >
+      Provide detailed explanations for incorrect answers, highlight the student's
+      strengths, and summarize their overall performance, addressing the student by name.
+      No learning content recommendations are given, as these will be handled by
+      a separate Recommendation Agent.
+    agent: QuizFeedbackAgent
+    expected_output: >
+      Dictionary containing:
+        - feedback_summary: short personalized performance summary mentioning the student by name
+        - explanations: dictionary mapping each incorrect question to an explanation
+        - strengths: list of topics where the student performed well
+        - weaknesses:
+    parameters:
+      - name: evaluation_results
+        type: dict
+        description: Results from the evaluation step, including score, topics, and errors.
+      - name: profile
+        type: dict
+        description: >
+          Student information containing:
+            - name: student's full name
+      - name: milestone
+        type: string
+        description: The course milestone at which the quiz was taken.

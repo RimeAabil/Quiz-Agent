@@ -1,0 +1,31 @@
+tasks:
+  - name: evaluate_quiz
+    description: >
+      Grade the student's quiz answers, calculate overall score, and provide
+      a breakdown of performance per topic. If it's the student's first attempt,
+      focus more on diagnostic feedback than strict grading.
+    agent: QuizEvaluatorAgent
+    expected_output: >
+      JSON with:
+        - score: numeric
+        - total: numeric
+        - correct: list of correctly answered questions (with topics)
+        - incorrect: list of incorrectly answered questions (with topics)
+        - topic_performance: dictionary mapping each topic to the percentage of correct answers in that topic
+    parameters:
+      - name: user_answers
+        type: list
+        description: The student's answers in order of the quiz questions.
+      - name: correct_answers
+        type: list
+        description: The correct answers for the quiz, in order.
+      - name: questions_metadata
+        type: list
+        description: >
+          A list of dictionaries, each containing:
+            - question: the question text
+            - topic: the topic this question belongs to
+            - difficulty: optional difficulty level (easy, medium, hard)
+      - name: milestone
+        type: string
+        description: The course milestone at which the quiz was taken.
