@@ -49,7 +49,7 @@ QuizAgent takes **educational content** and a **student profile**, then:
 
 ```mermaid
 flowchart TD
-    A[📄 Educational Content] --> B[⚙️ QuizAgent - Content Analyzer]
+    A[Educational Content] --> B[QuizAgent - Content Analyzer]
     B --> C[AI Question Generator]
     C --> D[ Student Takes Quiz]
     D --> E[AI Quiz Evaluation]
@@ -84,7 +84,7 @@ flowchart TD
 
 ---
 
-## 🧪 Example Usage
+## Example Usage
 
 ```python
 from QuizAgent import QuizAgent
